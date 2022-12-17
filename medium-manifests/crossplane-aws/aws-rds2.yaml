@@ -1,0 +1,36 @@
+apiVersion: database.aws.crossplane.io/v1beta1
+kind: DBSubnetGroup
+metadata:
+  name: prod-subnet-group
+spec:
+  forProvider:
+    region: eu-west-1
+    description: "Prod Subnet group"
+    subnetIdRefs:
+      - name: prod-subnet-2
+      - name: prod-subnet-1
+  providerConfigRef:
+    name: awsconfig
+
+--- 
+
+apiVersion: database.aws.crossplane.io/v1beta1
+kind: RDSInstance
+metadata:
+  name: rdspostgresql
+spec:
+  forProvider:
+    region: eu-west-1
+    dbInstanceClass: db.t2.small
+    dbSubnetGroupName: prod-subnet-group
+    masterUsername: masteruser
+    allocatedStorage: 20
+    engine: mysql
+    engineVersion: 5.7.40
+    skipFinalSnapshotBeforeDeletion: true
+  providerConfigRef:
+    name: awsconfig
+  writeConnectionSecretToRef:
+    namespace: crossplane-system
+    name: aws-rdspostgresql-conn
+
