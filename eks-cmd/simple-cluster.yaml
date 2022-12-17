@@ -1,0 +1,25 @@
+# A simple example of ClusterConfig object:
+---
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: poc-cluster
+  region: eu-west-1
+
+nodeGroups:
+  - name: nodegroup-1
+    instanceType: t3.medium
+    desiredCapacity: 3
+    ssh:
+      allow: true
+  - name: nodegroup-2
+    instanceType: t3.medium
+    desiredCapacity: 2
+    ssh:
+      allow: true
+vpc:
+  cidr: 10.10.0.0/16
+  autoAllocateIPv6: false
+  nat:
+    gateway: Single
