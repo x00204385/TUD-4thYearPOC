@@ -4,6 +4,6 @@ being used in the project.
 
 The proofs of concepts are:
 * [vpc-tf](/vpc-tf) Build infrastructure using Terraform and deploy a web server in a load balanced configuration
-* Build a managed Kubernetes cluster and deploy a web server to it
-* Build public cloud infrastructure using CrossPlane
+*  Build a managed Kubernetes cluster and deploy a web server to it
+* [medium-manifests](/medium-manifests) Build public cloud infrastructure using CrossPlane
 
