@@ -2,9 +2,8 @@
 resource "aws_db_subnet_group" "tudproj-db-subnetgroup" {
   name       = "tudproj-db-subnetgroup"
   subnet_ids = [aws_subnet.public-subnet-1a.id, aws_subnet.public-subnet-1b.id]
-
   tags = {
-    Name = "PCACA1 DB subnet group"
+    Name = "TUD POC DB subnet group"
   }
 }
 
